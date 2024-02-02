@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import jakarta.validation.constraints.Email;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class User extends Person {
+public class PlatformUser extends Person {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
@@ -32,12 +31,12 @@ public class User extends Person {
     private String email;
 
     @OneToMany
-    private List<User> contacts;
+    private List<PlatformUser> contacts;
 
     @OneToOne
     private ExchangeAccount exchangeAccount;
 
-    public User(UserRoles role, String email, List<User> contacts, ExchangeAccount exchangeAccount) {
+    public PlatformUser(UserRoles role, String email, List<PlatformUser> contacts, ExchangeAccount exchangeAccount) {
         this.role = role;
         this.email = email;
         this.contacts = contacts;

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 public class GlobalExceptionHandler {
 
     @GraphQlExceptionHandler
-    public GraphQLError handleMovieNotFoundException(BankAccountNotFoundException ex) {
+    public GraphQLError handleMovieNotFoundException(ExceptionHandler ex) {
         return GraphQLError.newError()
                 .message(ex.getMessage())
                 .build();

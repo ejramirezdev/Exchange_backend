@@ -1,0 +1,58 @@
+type Query {
+    findBankAccountById: BankAccount
+}
+
+type Mutation {
+    createBankAccount(createBankAccountInput: CreateBankAccountInput): BankAccount
+    createTransaction(createTransactionInput: CreateTransactionInput): Transaction
+}
+
+type BankAccount {
+    id: ID!
+    accountNumber: String!
+    bankName: String!
+    bankAddress: String!
+    swiftCode: String!
+    accountType: String!
+    accountDni: Float!
+    transactions: [Transaction!]!
+}
+
+type Transaction {
+    id: ID!
+    dateAndTime: String!
+    type: String!
+    amount: Float!
+    description: String!
+    sourceAccountId: ID!
+    targetAccountId: ID!
+}
+
+input TransactionInput {
+    id: ID!
+    dateAndTime: String!
+    type: String!
+    amount: Float!
+    description: String!
+    sourceAccountId: ID!
+    targetAccountId: ID!
+}
+
+input CreateBankAccountInput {
+    accountNumber: String!
+    bankName: String!
+    bankAddress: String!
+    swiftCode: String!
+    accountType: String!
+    accountDni: Float!
+    transactions: [TransactionInput]
+}
+
+input CreateTransactionInput {
+    dateAndTime: String!
+    type: String!
+    amount: Float!
+    description: String!
+    sourceAccountId: ID!
+    targetAccountId: ID!
+}
