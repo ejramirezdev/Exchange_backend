@@ -9,6 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, String> {
-    Optional<List<Transaction>> findBySourceAccountId(String sourceAccountId);
-    Optional<List<Transaction>> findByDestinationAccountId(String destinationAccountId);
+
 }

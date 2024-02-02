@@ -20,7 +20,6 @@ public class ExchangeAccount {
     private List<BankAccount> bankAccounts;
 
     @OneToMany
-    //private List<Transaction> transactions;
     private List<Transaction> transactionsList;
     private Double balance;
 }

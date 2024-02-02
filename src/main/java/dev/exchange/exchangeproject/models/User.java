@@ -19,8 +19,7 @@ import java.util.List;
 public class User extends Person {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    //private String id;
-    private String userId;
+    private String id;
 
 
     @Enumerated(EnumType.STRING)
@@ -28,15 +27,20 @@ public class User extends Person {
 
     @NotBlank
     @NotNull
-    @Size(max=50, message = "User name must be less than or equal to 50 characters")
-    @Column(length=50)
+    @Size(max = 50, message = "User name must be less than or equal to 50 characters")
+    @Column(length = 50)
     private String email;
 
     @OneToMany
     private List<User> contacts;
-    //private ExchangeAccount exchangeAccount;
 
-    @OneToMany
-    private List<ExchangeAccount> exchangeAccountList;
+    @OneToOne
+    private ExchangeAccount exchangeAccount;
 
+    public User(UserRoles role, String email, List<User> contacts, ExchangeAccount exchangeAccount) {
+        this.role = role;
+        this.email = email;
+        this.contacts = contacts;
+        this.exchangeAccount = exchangeAccount;
+    }
 }
